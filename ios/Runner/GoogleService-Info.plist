@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>572164235877-e225kao80vn56bhvmr9abj82ihosa2tg.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.572164235877-e225kao80vn56bhvmr9abj82ihosa2tg</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDZj0HVRDJ7EbG2A7wtkO0zHb9oHclE63k</string>
+	<key>GCM_SENDER_ID</key>
+	<string>572164235877</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.vcar</string>
+	<key>PROJECT_ID</key>
+	<string>vcar-87f35</string>
+	<key>STORAGE_BUCKET</key>
+	<string>vcar-87f35.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:572164235877:ios:f4d1de03e8012e85109c8c</string>
+	<key>DATABASE_URL</key>
+	<string>https://vcar-87f35.firebaseio.com</string>
+</dict>
+</plist>

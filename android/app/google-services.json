@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "572164235877",
+    "firebase_url": "https://vcar-87f35.firebaseio.com",
+    "project_id": "vcar-87f35",
+    "storage_bucket": "vcar-87f35.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:572164235877:android:f147a1c336f9101a109c8c",
+        "android_client_info": {
+          "package_name": "com.example.vcar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "572164235877-uqp2a7gh9tna2jbnjq8kf25vkf6suuj7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD57X2U2jukvla2NmhEMjMjmtr9l1UjJ_Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "572164235877-uqp2a7gh9tna2jbnjq8kf25vkf6suuj7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
