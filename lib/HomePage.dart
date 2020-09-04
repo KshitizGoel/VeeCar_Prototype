@@ -1,6 +1,8 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import "Posts.dart";
+import "package:url_launcher/url_launcher.dart";
+import 'newScreen.dart';
 
 
 class HomePage extends StatefulWidget{
@@ -8,11 +10,10 @@ class HomePage extends StatefulWidget{
   State<StatefulWidget> createState() {
    return HomePageState();
   }
-
-
 }
 
 class HomePageState extends State<HomePage>{
+  String phoneNumberCalling ;
 
   DatabaseReference ref = FirebaseDatabase.instance.reference().child("Details") ;
   List <Posts> postsList = [];
@@ -24,19 +25,60 @@ class HomePageState extends State<HomePage>{
     return Scaffold(
 
       appBar: AppBar(
-        title: Text("Retrieving the data"),
+        title: Text("Prototype VeeCar app"),
         centerTitle: true,
       ),
 
       body: Form(
 
-        
-        
         child: ListView(
 
           padding: EdgeInsets.all(30.0),
           
           children: <Widget>[
+
+            Padding(
+              padding: EdgeInsets.all(15.0),
+              child: ButtonTheme(
+
+                height: 50.0,
+
+                child: RaisedButton(
+
+                  child: Column(
+
+                    children: <Widget>[
+
+                      Icon(
+                        Icons.add_a_photo,
+                        color: Colors.white,
+                      ),
+                      Text(
+                        "Take a photo",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold
+                        ),
+                      )
+                    ]
+
+                  ),
+
+                  onPressed: (){
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                    builder:(context) =>NewScreen(),
+
+                    ),);
+                  },
+
+                ),
+
+              ),
+            ),
+
             Padding(
               padding: EdgeInsets.all(15.0),
             child: TextFormField(
@@ -61,15 +103,29 @@ class HomePageState extends State<HomePage>{
 
               elevation: 10.0,
 
-              child: Text(
-                "Search ",
+              child: Column(
 
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                  fontSize: 30.0
-                ),
+                children: <Widget>[
+
+                  Icon(
+                    Icons.search,
+                    color: Colors.white,
+                  ),
+
+                  Text(
+                    "Search ",
+
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontSize: 20.0
+                    ),
+                  )
+                ],
+
               ),
+
+
               onPressed: (){
                 String carNumberInput = carNumberController.text.toString().replaceAll(" ", "");
 
@@ -102,7 +158,7 @@ class HomePageState extends State<HomePage>{
             Container(
 
 
-              child: postsList.length==0? Text("Nothing available!") : ListView.builder(
+              child: postsList.length==0? Text(" ") : ListView.builder(
                   shrinkWrap: true,
 
                   itemCount: postsList.length,
@@ -112,7 +168,89 @@ class HomePageState extends State<HomePage>{
                   }
               ),
 
-            )
+            ),
+
+            Padding(
+
+              padding: EdgeInsets.all(20.0),
+
+              child: ButtonTheme(
+
+                height: 50.0,
+
+                child: RaisedButton(
+                    color: Colors.deepOrange,
+
+                    elevation: 10.0,
+
+                    child:Column(
+
+                      children:<Widget> [
+                        Icon(
+                          Icons.call,
+                          color: Colors.white,
+                        ),
+
+
+
+                        Text(
+                          "Call",
+
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              fontSize: 20.0
+                          ),
+                        ),
+
+                      ],
+                    ),
+                    onPressed: (){
+                      call1();
+                    }
+                ),
+              ),
+            ),
+            Padding(
+
+              padding: EdgeInsets.all(20.0),
+
+              child: ButtonTheme(
+
+                height: 50.0,
+
+
+                child: RaisedButton(
+                    color: Colors.deepOrange,
+
+                    elevation: 10.0,
+
+                    child:Column(
+
+                      children:<Widget> [
+
+                        Icon(
+                          Icons.textsms,
+                          color: Colors.white,
+                        ),
+                       Text(
+                          "SMS",
+
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              fontSize: 20.0
+                          ),
+                        ),
+                      ],
+                ),
+                    onPressed: (){
+                      sms1();
+                    }
+                )
+              ),
+            ),
+
           ],
         ),
       ),
@@ -120,6 +258,7 @@ class HomePageState extends State<HomePage>{
   }
 
   Widget postsUI ( String carNo, String ownerName, int flatNo,  int phoneNo){
+    phoneNumberCalling = phoneNo.toString();
 
     return Card(
       elevation: 20.0,
@@ -164,7 +303,6 @@ class HomePageState extends State<HomePage>{
             SizedBox(height: 15.0,),
             Text(
               "Contact Number:  ${phoneNo.toString()}"  ,
-
               style: Theme.of(context).textTheme.subtitle2,
               textAlign: TextAlign.center,
             ),
@@ -177,6 +315,16 @@ class HomePageState extends State<HomePage>{
 
     );
 
+  }
+
+  call1(){
+    String phoneNo = "tel:" + phoneNumberCalling;
+    launch(phoneNo);
+  }
+
+  sms1(){
+    String sms = "sms: $phoneNumberCalling";
+    launch(sms);
   }
 
 }
